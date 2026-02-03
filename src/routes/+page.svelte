@@ -26,7 +26,8 @@
   let activeLetters = $state(new Array(letterItems.length).fill(false));
 
   const i18n = getI18n();
-  const theme = getTheme();
+  // const theme = getTheme();
+
   let showContent = $state(false);
   let showOutline = $state(false);
   let highlightActive = $state(false);
@@ -57,11 +58,27 @@
 </script>
 
 <main
-  class="min-h-screen w-full overflow-x-hidden transition-colors duration-500"
+  class="min-h-screen w-full overflow-x-hidden bg-black text-white transition-colors duration-500 dark"
 >
-  <!-- Hero Section -->
-  <section class="min-h-screen w-full relative overflow-hidden flex flex-col">
-    <Navbar />
+  <Navbar />
+  <!-- Hero Section (Strictly Isolated Dark Mode) -->
+  <section
+    class="min-h-screen w-full relative overflow-hidden flex flex-col dark bg-black"
+  >
+    <!-- Background Video -->
+    <div
+      class="absolute inset-0 z-0 overflow-hidden pointer-events-none transition-opacity duration-[2000ms] opacity-40"
+    >
+      <video
+        autoplay
+        loop
+        muted
+        playsinline
+        class="w-screen h-screen object-cover"
+      >
+        <source src="/barcelona.mp4" type="video/mp4" />
+      </video>
+    </div>
 
     <!-- Main Content -->
     <div
@@ -71,7 +88,7 @@
       <div
         class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
          w-[70vw] md:w-[40vw] h-12 md:h-24 flex justify-center items-center transition-all duration-1000 -z-10
-         {theme?.current === 'dark' ? 'invert' : ''}
+         invert
          {showOutline ? 'opacity-100 blur-0' : 'opacity-0 blur-xl'}"
       >
         {#each letterItems as item, i}
@@ -93,78 +110,33 @@
         class="md:block absolute top-1/2 left-1/2 transform -translate-x-1/2 translate-y-[calc(3rem+0.75rem)]
         dm-mono font-light uppercase tracking-[0.3em]
         {showContent ? 'letter-active' : 'opacity-0'} 
-        text-base max-w-3xl text-center leading-loose pointer-events-auto"
+        text-base max-w-3xl text-center leading-loose pointer-events-auto text-white"
       >
         [{i18n.t("hero.subtitle")}]
       </p>
     </div>
   </section>
 
-  <!-- Areas Section -->
+  <!-- Areas Section (Enforced Dark Mode) -->
   <section
-    class="py-20 md:py-32 px-6 md:px-24 border-t border-brand-fg/5 transition-colors duration-500"
+    class="flex flex-col gap-5 w-screen h-screen
+      justify-center items-center py-20 md:py-32 px-6 md:px-24 bg-black"
   >
     <h2
-      class="syne text-[10px] md:text-sm font-bold tracking-[0.3em] mb-10 md:mb-16 pl-3 py-2 uppercase
-        bg-brand-fg text-brand-bg transition-colors duration-500"
+      class="dm-mono font-light uppercase
+       text-white text-center"
     >
       [{i18n.t("section.services.title")}]
     </h2>
-
-    <div class="flex flex-col gap-4 md:gap-8">
-      {#each ["01", "02", "03"] as id}
-        <div
-          class="group border-b border-brand-fg/10 pb-5 md:pb-8 flex flex-col md:flex-row md:items-end justify-between hover:border-brand-fg transition-colors duration-500"
-        >
-          <div class="flex items-center gap-5 pl-4">
-            <div class="h-2 w-2 border border-brand-fg bg-brand-fg"></div>
-            <h3
-              class="syne text-3xl sm:text-4xl md:text-5xl font-bold tracking-tighter uppercase leading-none"
-            >
-              {i18n.t(`section.services.${id}`)}
-            </h3>
-          </div>
-          <span
-            class="dm-mono text-base md:text-xl opacity-40 group-hover:opacity-100 transition-opacity mt-2 md:mt-0 font-light"
-          >
-            /{id}
-          </span>
-        </div>
-      {/each}
-    </div>
-  </section>
-
-  <!-- Process Section -->
-  <section
-    class="pt-20 pb-40 md:pt-32 md:pb-60 px-6 md:px-24 bg-brand-bg transition-colors duration-500"
-  >
-    <h2
-      class="syne text-[10px] md:text-sm font-bold tracking-[0.3em] mb-10 md:mb-16 pl-3 py-2 uppercase
-        bg-brand-fg text-brand-bg transition-colors duration-500"
-    >
-      [{i18n.t("section.process.title")}]
-    </h2>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-16">
-      {#each ["01", "02", "03"] as id}
-        <div class="group">
-          <span
-            class="dm-mono text-[10px] opacity-30 mb-4 block tracking-widest"
-            >/{id}</span
-          >
-          <h4
-            class="syne text-2xl md:text-3xl font-bold mb-4 md:mb-6 tracking-tight leading-none group-hover:italic transition-all duration-300"
-          >
-            {i18n.t(`section.process.${id}.title`)}
-          </h4>
-          <p
-            class="dm-mono text-md opacity-50 leading-relaxed max-w-xs transition-opacity duration-500 group-hover:opacity-100 uppercase"
-          >
-            {i18n.t(`section.process.${id}.desc`)}
-          </p>
-        </div>
-      {/each}
-    </div>
+    <p class="text-white dm-mono uppercase text-center">
+      We are an engineering lab focused on porting high-level AI reasoning into
+      physical movement. Currently, we are developing autonomous ground agents
+      using high-mobility platforms as testbeds for our vision and networking
+      architecture. Our goal is to deploy a software stack capable of
+      understanding and navigating complex environments in real-time. By pushing
+      all intelligence to the edge, we are building systems that don't just
+      move—they see, reason, and act with total autonomy.
+    </p>
   </section>
 
   <!-- Footer Section -->

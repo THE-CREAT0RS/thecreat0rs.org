@@ -5,35 +5,30 @@
   const theme = getTheme();
 </script>
 
-<nav class="fixed top-0 right-0 z-50 p-6 md:p-14">
-  <div
-    class="flex flex-row gap-4 md:gap-6 items-center bg-brand-bg/70 backdrop-blur-xl px-6 py-2 border border-brand-fg/5 transition-colors duration-500"
-  >
-    <button
-      onclick={() => theme.toggle()}
-      class="dm-mono text-lg md:text-xs font-light uppercase tracking-widest cursor-pointer transition-all opacity-30 hover:opacity-100"
-    >
-      {theme.current === "dark" ? "light" : "dark"}
-    </button>
-    <div class="w-[1px] h-3 bg-brand-fg/10 self-center"></div>
-    <button
+<nav
+  class="fixed top-0 left-0 w-full z-50 bg-black py-4 px-6 md:px-14 flex justify-between items-center transition-colors duration-500"
+>
+  <div class="flex items-center h-2 w-2 bg-white rounded-full"></div>
+
+  <div class="flex flex-row gap-4 md:gap-6 items-center">
+    <!-- <button
       onclick={() => i18n.setLang("en")}
-      class="dm-mono text-lg md:text-xs font-light uppercase tracking-widest cursor-pointer transition-all {i18n.currentLang ===
+      class="dm-mono text-lg md:text-xs font-light uppercase tracking-widest cursor-pointer transition-all text-white {i18n.currentLang ===
       'en'
         ? 'opacity-100'
-        : 'opacity-30 hover:opacity-60'}"
+        : 'opacity-30 hover:opacity-100'}"
     >
       EN
     </button>
-    <div class="w-[1px] h-3 bg-brand-fg/10 self-center"></div>
+    <div class="w-[1px] h-3 bg-white/20 self-center"></div>
     <button
       onclick={() => i18n.setLang("es")}
-      class="dm-mono text-lg md:text-xs font-light uppercase tracking-widest cursor-pointer transition-all {i18n.currentLang ===
+      class="dm-mono text-lg md:text-xs font-light uppercase tracking-widest cursor-pointer transition-all text-white {i18n.currentLang ===
       'es'
         ? 'opacity-100'
-        : 'opacity-30 hover:opacity-60'}"
+        : 'opacity-30 hover:opacity-100'}"
     >
       ES
-    </button>
+    </button> -->
   </div>
 </nav>

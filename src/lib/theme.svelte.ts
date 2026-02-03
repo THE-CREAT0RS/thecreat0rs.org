@@ -3,32 +3,21 @@ import { getContext, setContext } from 'svelte';
 type Theme = 'dark' | 'light';
 
 class ThemeManager {
-    current = $state<Theme>('light');
+    current = 'dark';
 
     constructor() {
-        if (typeof window !== 'undefined') {
-            const saved = localStorage.getItem('theme') as Theme;
-            if (saved) {
-                this.current = saved;
-            }
-        }
+        // Enforce light mode always
+        this.current = 'dark';
     }
 
     toggle() {
-        this.current = this.current === 'dark' ? 'light' : 'dark';
-        if (typeof window !== 'undefined') {
-            localStorage.setItem('theme', this.current);
-            this.apply();
-        }
+        // Disabled theme toggling
     }
 
     apply() {
         if (typeof window !== 'undefined') {
-            if (this.current === 'dark') {
-                document.documentElement.classList.add('dark');
-            } else {
-                document.documentElement.classList.remove('dark');
-            }
+            document.documentElement.classList.remove('light');
+            document.documentElement.classList.add('dark');
         }
     }
 }
