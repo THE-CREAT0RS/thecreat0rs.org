@@ -129,13 +129,10 @@
       [{i18n.t("section.services.title")}]
     </h2>
     <p class="text-white dm-mono uppercase text-center">
-      We are an engineering lab focused on porting high-level AI reasoning into
-      physical movement. Currently, we are developing autonomous ground agents
-      using high-mobility platforms as testbeds for our vision and networking
-      architecture. Our goal is to deploy a software stack capable of
-      understanding and navigating complex environments in real-time. By pushing
-      all intelligence to the edge, we are building systems that don't just
-      move—they see, reason, and act with total autonomy.
+      We develop autonomous systems designed for the edge, leveraging
+      high-mobility platforms and multimodal architectures. Our software stack
+      enables real-time understanding in open environments. We create systems
+      capable of operating with total autonomy and resilience.
     </p>
   </section>
 
